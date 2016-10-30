@@ -1,0 +1,36 @@
+{
+  "scripts": {
+    "start": "concurrently \"npm run sass:watch\" \"npm run webpack:serve\"",
+    "sass": "node_modules/.bin/node-sass app --output app",
+    "sass:watch": "node_modules/.bin/node-sass --watch app --output app",
+    "webpack:serve": "webpack-dev-server --config webpack.dev.config.js --content-base dist",
+    "webpack:dev": "node_modules/.bin/webpack --config webpack.dev.config.js",
+    "webpack:prod": "node_modules/.bin/webpack --config webpack.prod.config.js"
+  },
+  "dependencies": {
+    "core-js": "2.4.1",
+    "zone.js": "0.6.26"
+  },
+  "devDependencies": {
+    "@angular/common": "2.1.2",
+    "@angular/compiler": "2.1.2",
+    "@angular/core": "2.1.2",
+    "@angular/platform-browser": "2.1.2",
+    "@angular/platform-browser-dynamic": "2.1.2",
+    "@angular/compiler-cli": "2.1.2",
+    "@angular/platform-server": "2.1.2",
+    "@ngtools/webpack": "1.1.0",
+    "@types/core-js": "0.9.34",
+    "angular2-template-loader": "0.5.0",
+    "awesome-typescript-loader": "2.2.4",
+    "concurrently": "3.1.0",
+    "copy-webpack-plugin": "4.0.0",
+    "node-sass": "3.10.1",
+    "raw-loader": "^0.5.1",
+    "rxjs": "5.0.0-rc.1",
+    "sass-loader": "4.0.2",
+    "typescript": "2.0.6",
+    "webpack": "2.1.0-beta.25",
+    "webpack-dev-server": "2.1.0-beta.10"
+  }
+}
