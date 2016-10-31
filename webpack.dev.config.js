@@ -33,7 +33,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new CopyPlugin([{from: './index.html', to: '.'}]),
+        new CopyPlugin([
+            {from: './index.html', to: '.'},
+            {from: './assets', to: './assets'}
+            ]),
         new webpack.ProgressPlugin(),
         new webpack.ContextReplacementPlugin(
             // The (\\|\/) piece accounts for path separators in *nix and Windows

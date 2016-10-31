@@ -1,3 +1,76 @@
+$picture-height: 150px;
+$picture-width: 270px;
+
 :host {
-    color: red;
+    display: block;
+    position: relative;
+    margin: 40px auto;
+    width: 351px;
+    height: 650px;
+    perspective: 1000px; 
+}
+
+._polaroid-top {
+    animation: ease 2s glow infinite;
+    width: 351px;
+    height: 366px;
+    z-index: 1;
+}
+
+@keyframes glow {
+    0% {
+        background-image: url('assets/polaroid-top.png');
+    }
+
+    50% {
+        background-image: url('assets/polaroid-top-glow.png');
+    }
+
+    100% {
+        background-image: url('assets/polaroid-top.png');
+    }
+}
+
+._polaroid-bottom {
+    background-image: url('assets/polaroid-bottom.png');
+    width: 351px;
+    height: 46px;
+    z-index: -2;
+    position: relative;
+}
+
+._button-print {
+    position: absolute;
+    cursor: pointer;
+    top: 188px;
+    left: 48px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+._photo-wrapper {
+    position: absolute;
+    top: 370px;
+    left: 35px;
+    width: $picture-width + 20px;
+    z-index: -1;
+}
+
+._photo-shadow {
+    width: $picture-width + 20px;
+    position: relative;
+    cursor: pointer;
+
+    transform: rotateX(5deg);
+    background-color: white;
+    box-shadow: 0px 5px 5px #DDDDDD;
+}
+
+._photo {
+    padding: 50px 10px 5px 10px;
+    box-shadow: inset 0px 24px 51px -12px;
+    width: $picture-width;
 }

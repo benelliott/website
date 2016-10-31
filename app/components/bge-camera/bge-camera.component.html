@@ -1,0 +1,8 @@
+<div class="_polaroid-top"></div>
+<div class="_polaroid-bottom"></div>
+<button class="_button-print" (click)="handlePrintButtonClick()"></button>
+<div class="_photo-wrapper" *ngIf="selectedPhoto">
+    <div class="_photo-shadow">
+        <img class="_photo" [src]="selectedPhoto.url_n" [alt]="selectedPhoto.name" [@print]="''">
+    </div>
+</div>
