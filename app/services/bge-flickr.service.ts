@@ -21,7 +21,7 @@ export class BGEFlickrService {
         params.append('photoset_id', BGEFlickrService.PHOTOSET_ID);
         params.append('user_id', BGEFlickrService.USER_ID);
         params.append('method', 'flickr.photosets.getPhotos');
-        params.append('extras', 'url_n,url_l,date_taken');
+        params.append('extras', 'url_n,url_h,date_taken');
         params.append('format', 'json');
         params.append('nojsoncallback', '1');
 

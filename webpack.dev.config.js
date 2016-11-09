@@ -24,11 +24,11 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ['sass', 'raw']
+                use: ['raw', 'postcss', 'sass']
             },
             {
                 test: /\.css$/,
-                use: ['raw']
+                use: ['raw', 'postcss']
             }
         ]
     },

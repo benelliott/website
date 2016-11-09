@@ -1,40 +1,62 @@
-$picture-height: 150px;
-$picture-width: 270px;
+$container-height: 600px;
+$container-width: 400px;
+$container-perspective: 1000px;
+$container-margin-top: 30px;
+$polaroid-top-height: 300px;
+$polaroid-bottom-height: 46px;
+$photo-height: 150px;
+$photo-width: 270px;
+$photo-padding-top: 50px;
+$photo-padding-right: 10px;
+$photo-padding-bottom: 5px;
+$photo-padding-left: 10px;
+$button-top: 122px;
+$button-left: 57px;
+$button-size: 40px;
+$photo-wrapper-top: 290px;
+$photo-wrapper-left: 58px;
+$photo-wrapper-padding: 10px;
 
 :host {
     display: block;
     position: relative;
-    margin: 40px auto;
-    width: 351px;
-    height: 650px;
-    perspective: 1000px; 
+    margin: $container-margin-top auto;
+    width: $container-width;
+    height: $container-height;
+    perspective: $container-perspective; 
 }
 
 ._polaroid-top {
-    animation: ease 2s glow infinite;
-    width: 351px;
-    height: 366px;
+    animation: ease 5s glow infinite;
+    background-size: 100% 100%;
+    width: $container-width;
+    height: $polaroid-top-height;
     z-index: 1;
 }
 
 @keyframes glow {
     0% {
-        background-image: url('assets/polaroid-top.png');
+        background-image: url('assets/polaroid_black_top.png');
+    }
+
+    25% {
+        background-image: url('assets/polaroid_black_top_glow.png');
     }
 
     50% {
-        background-image: url('assets/polaroid-top-glow.png');
+        background-image: url('assets/polaroid_black_top.png');
     }
 
     100% {
-        background-image: url('assets/polaroid-top.png');
+        background-image: url('assets/polaroid_black_top.png');
     }
 }
 
 ._polaroid-bottom {
-    background-image: url('assets/polaroid-bottom.png');
-    width: 351px;
-    height: 46px;
+    background-image: url('assets/polaroid_black_bottom.png');
+    background-size: 100% 100%;
+    width: $container-width;
+    height: $polaroid-bottom-height;
     z-index: -2;
     position: relative;
 }
@@ -42,10 +64,10 @@ $picture-width: 270px;
 ._button-print {
     position: absolute;
     cursor: pointer;
-    top: 188px;
-    left: 48px;
-    width: 40px;
-    height: 40px;
+    top: $button-top;
+    left: $button-left;
+    width: $button-size;
+    height: $button-size;
     background: transparent;
     border: none;
     outline: none;
@@ -53,24 +75,79 @@ $picture-width: 270px;
 
 ._photo-wrapper {
     position: absolute;
-    top: 370px;
-    left: 35px;
-    width: $picture-width + 20px;
+    top: $photo-wrapper-top;
+    left: $photo-wrapper-left;
+    width: $photo-width + $photo-wrapper-padding * 2;
     z-index: -1;
+    transform-origin: 0 0;
+    transform: translate3d(0, -20px, -350px) rotateX(85deg);
 }
 
 ._photo-shadow {
-    width: $picture-width + 20px;
+    width: $photo-width + $photo-wrapper-padding * 2;
     position: relative;
     cursor: pointer;
-
     transform: rotateX(5deg);
     background-color: white;
-    box-shadow: 0px 5px 5px #DDDDDD;
+    box-shadow: 0px 5px 5px #404040;
 }
 
 ._photo {
-    padding: 50px 10px 5px 10px;
-    box-shadow: inset 0px 24px 51px -12px;
-    width: $picture-width;
+    padding-top: $photo-padding-top;
+    padding-right: $photo-padding-right;
+    padding-bottom: $photo-padding-bottom;
+    padding-left: $photo-padding-left;
+    box-shadow: inset 0px 25px 50px -10px #000;
+    width: $photo-width;
+    display: block;
 }
+
+@mixin scale-polaroid($query, $scale) {
+    @media #{$query} {
+        
+    :host {
+        margin: $container-margin-top * $scale auto;
+        width: $container-width * $scale;
+        height: $container-height * $scale;
+        perspective: $container-perspective * $scale;
+    
+        ._polaroid-top {
+            width: $container-width * $scale;
+            height: $polaroid-top-height * $scale;
+        }
+
+        ._polaroid-bottom {
+            width: $container-width * $scale;
+            height: $polaroid-bottom-height * $scale;
+        }
+
+        ._button-print {
+            top: $button-top * $scale;
+            left: $button-left * $scale;
+            width: $button-size * $scale;
+            height: $button-size * $scale;
+        }
+
+        ._photo-wrapper {
+            top: $photo-wrapper-top * $scale;
+            left: $photo-wrapper-left * $scale;
+            width: ($photo-width + $photo-wrapper-padding * 2) * $scale;
+        }
+
+        ._photo-shadow {
+            width: ($photo-width + $photo-wrapper-padding * 2) * $scale;
+        }
+
+        ._photo {
+            padding-top: $photo-padding-top * $scale;
+            padding-right: $photo-padding-right * $scale;
+            padding-bottom: $photo-padding-bottom * $scale;
+            padding-left: $photo-padding-left * $scale;
+            width: $photo-width * $scale;
+        }
+    }
+    }
+}//
+
+@include scale-polaroid('screen and (max-width: 960px), (max-height: 700px)', 0.7);
+@include scale-polaroid('screen and (max-width: 320px), (max-height: 500px)', 0.5);

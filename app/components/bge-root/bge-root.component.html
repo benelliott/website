@@ -1,3 +1,11 @@
-<h1 class="_header">{{name}}</h1>
-<bge-camera class="_camera"></bge-camera>
-<ul class="_links"></ul>
+<div class="_wrapper" [style.backgroundColor]="backgroundColour">
+    <h1 class="_header">Benjamin Elliott</h1>
+    <ul class="_links">
+        <li><a target="_blank" href="https://github.com/benelliott/"><i class="fa fa-github"></i></a></li>
+        <li><a target="_blank" href="https://www.flickr.com/photos/126927280@N03/"><i class="fa fa-flickr"></i></a></li>
+        <li><a target="_blank" href="https://uk.linkedin.com/in/benjamin-elliott-5126422b"><i class="fa fa-linkedin"></i></a></li>
+    </ul>
+    <bge-camera class="_camera" (photoClick)="handlePhotoClick($event)"></bge-camera>
+    <div class="_modal-bkgd" *ngIf="photo" (click)="handleModalBackgroundClick()"></div>
+    <bge-photo-modal class="_modal" *ngIf="photo" [photo]="photo"></bge-photo-modal>
+</div>
