@@ -1,7 +1,5 @@
 # website
-This repository holds the code for my personal website.
-
-A simple single-page app which lets you flick through some of my Flickr photographs.
+This repository holds the code for my personal website - a simple single-page app which lets you flick through some of my Flickr photographs.
 
 You can see it in action here: http://benjaminelliott.co.uk/ 
 
